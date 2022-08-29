@@ -1,34 +1,28 @@
-import { NovoUsuarioComponent } from './novo-usuario/novo-usuario.component';
-import { LoginComponent } from './login/login.component';
-import { HomeComponent } from './home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { HomeComponent } from './home.component';
+import { LoginComponent } from './login/login.component';
+import { NovoUsuarioComponent } from './novo-usuario/novo-usuario.component';
 
 const routes: Routes = [
   {
-    path:'',
-    component:HomeComponent,
-    //SUBROTAS DO HOME
-    children:[
+    path: '',
+    component: HomeComponent,
+    children: [
       {
-        path:'',
-        component:LoginComponent,
+        path: '',
+        component: LoginComponent,
       },
       {
-        path:"novousuario",
-        component:NovoUsuarioComponent,
-
+        path: 'novousuario',
+        component: NovoUsuarioComponent,
       },
-      
-    ]
+    ],
   },
-
-
-
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class HomeRoutingModule { }
+export class HomeRoutingModule {}
