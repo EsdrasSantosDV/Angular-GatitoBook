@@ -19,6 +19,15 @@
 
          </i>
       </small>
+
+      <app-comentarios [id]="animalId" *ngIf="animal.allowComments;else warning"></app-comentarios>
+
+      <ng-template  #warning>
+        <p>
+          Usuario não pode comentar o animal
+        </p>
+      </ng-template>
+
     </div>
   </div>
 </div>
