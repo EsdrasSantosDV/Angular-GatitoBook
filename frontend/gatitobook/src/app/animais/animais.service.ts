@@ -1,7 +1,7 @@
 import { environment } from './../../environments/environment';
 import { TokenService } from './../autenticacao/token.service';
 import { Observable } from 'rxjs';
-import { Animais } from './animais';
+import { Animais,Animal } from './animais';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -17,12 +17,16 @@ export class AnimaisService {
 
   listaDoUsuario(nomeDoUsuario:string):Observable<Animais>
   {
-    //FAZENDO UM GET E DANDO O HEADER QUE O BACKEND TA EXIGINDO
-    const token=this.TokenService.retornaToken();
-    const headers=new HttpHeaders().append('x-access-token',token);
-    return this.http.get<Animais>(`${API}/${nomeDoUsuario}/photos`,{
-      headers,
-    });
+
+    return this.http.get<Animais>(`${API}/${nomeDoUsuario}/photos`);
 
   }
+
+  buscaPorID(id:number):Observable<Animal>{
+
+    return this.http.get<Animal>(`${API}/photos/${id}`);
+  }
+
+
+
 }
